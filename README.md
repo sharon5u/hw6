@@ -1,28 +1,15 @@
-# Pantry Pal — first version
+## Web APP for HW 6 - Pantry Pal
 
-This README is a scaffold, not your finished homework submission. Write the four
-sections below yourself, after using the app. All implementation notes after the
-AI-generated heading were written by Codex.
 
-## 1. What my app does and why I chose it
+## Data Source and Info
 
-TODO: Write 1–2 sentences in your own words.
 
-## 2. My data and storage choices
+## How to add/use?
 
-TODO: Explain the source, recipe count, what one item means, chunking, and metadata.
 
-## 3. Adding recipes and searching
+## Two queries
 
-TODO: Explain the user workflow in your own words after trying the menu.
-
-## 4. Two semantic-search examples
-
-TODO: Run the examples in TEST_REPORT.md yourself. Record the queries, returned
-recipes, and why an important-keyword search would miss them. Explain the result
-in your own words; do not claim that all paraphrases work.
-
-## AI-generated implementation and setup notes
+## How to obtain data
 
 ### Run the prepared copy
 
@@ -120,57 +107,6 @@ python app.py search --need "Help me repair my bicycle brakes"
 python -m unittest -v
 ```
 
-### How it works
-
-1. `recipes.py` validates RecipeNLG fields and normalizes a small set of ingredient aliases.
-2. `store.py` uses ChromaDB 1.5.9 `PersistentClient` with cosine distance and the
-   local `all-MiniLM-L6-v2` ONNX embedding model.
-3. Searchable text combines the title, optional description, extracted ingredient
-   names, and directions. Long text is split into 240-token windows with up to 32
-   tokens of overlap using the model's tokenizer; full recipes remain in metadata.
-   The prepared 500-recipe subset produces 501 chunks.
-4. Explicit food categories are hard constraints before pantry ranking. Requests
-   for beverages, desserts, soups/stews, salads, bread, pasta, breakfast, or snacks
-   only admit recipes classified into those categories. Lunch/dinner exclude
-   beverages, desserts, and condiments. Classification uses conservative title
-   rules in `categories.py`, not ingredient mentions; a casserole containing soup
-   is still a casserole. Unknown titles are excluded for specific category requests.
-   This can miss unusually named recipes; it is not a comprehensive food ontology
-   or a general natural-language constraint parser. No wrong-category fallback
-   is used when a category has no close matches.
-   Search considers every chunk in this small local collection, rejects cosine
-   distances above 0.70, and deduplicates recipes. With pantry ingredients, recipes
-   that use at least one pantry item come first. Within those groups, fewer missing
-   plus unverified ingredients ranks higher, then greater ingredient coverage, then
-   closer semantic distance. Without a pantry, results rank by semantic distance.
-   This keeps the meal request relevant while prioritizing dishes needing less shopping.
-5. The CLI shows three results and the browser shows up to nine, with matching ingredients, a missing-ingredient shopping
-   list, full ingredient quantities, original directions, and source links.
-6. Imports use stable content IDs and upsert, so repeating an identical import
-   does not duplicate it. User additions receive UUIDs and are immediately searchable.
-
-The database lives at `chroma_store/` relative to the source files, so starting the
-app from another working directory still opens the same collection. `--store`
-can select a separate database for experiments.
-
-### Limits to understand
-
-- Input and source recipes are English. The corpus contains many US-style dishes.
-- The 0.70 distance cutoff is a heuristic based on initial examples, not a calibrated
-  confidence probability. Results over 0.65 are labeled loose matches. Some relevant
-  queries are rejected and some irrelevant results can still pass.
-- Negation, dietary exclusions, allergies, time limits, and quantities are not
-  enforced. For example, a request for a meatless Italian meal may retrieve a beef
-  casserole. Inspect the ingredient list; this version does not promise those filters.
-- Pantry matching uses exact normalized names and a short alias list; it does not
-  infer substitutions. `milk` differs from `coconut milk`, and `chicken` differs from
-  `chicken breast`. Common seasonings are assumed available using the explicit list in recipes.py. Main ingredients such as meat, vegetables, milk, eggs, butter, and flour are still checked. Quantity sufficiency is not checked.
-- RecipeNLG's extracted ingredient names can omit or mislabel ingredients. Raw
-  ingredient lines without a matching extracted name are explicitly flagged for
-  manual checking. The full original ingredient list is also shown. This simple
-  check can over-flag spelling variations and cannot detect every extraction error.
-- Source directions are preserved, not generated or independently corrected.
-- No update/delete UI, hosted deployment, or generated explanations.
 
 ### Data sources and attribution
 
@@ -194,48 +130,4 @@ of student work. The student still needs to understand and refine the code, writ
 the first four README sections, maintain the prompt log, record the demo, add a
 portfolio entry, push to GitHub, and submit the required form.
 
-### Cartoon theme update
 
-The active interface now uses original inline SVG food cartoons instead of the
-photo library. Dish names select cookie, bread, beverage, salad, pasta and other
-illustrations, with an ingredient-based fallback. These are playful impressions,
-not exact recipe previews. SVGs render without external image requests, even when
-an older server response has no photo metadata. The rounded Nunito font is bundled
-locally under its SIL Open Font License in web/fonts/OFL.txt. Historical photo
-assets and credits remain in the project but are no longer displayed.
-
-Meal intent is applied before pantry ranking: ordinary lunch/dinner/supper queries
-exclude breakfast dishes, snacks, standalone bread, desserts, drinks, condiments,
-and unclassified recipes. An explicit exception such as “breakfast for dinner”
-is respected. These conservative title-based rules may omit suitable unusually
-named dishes; they do not guarantee every arbitrary natural-language constraint.
-
-### Keyword filters
-
-Use **Pick your favorites** to select dish types and ingredient keywords, then
-click **Apply filters**. Dish types are alternatives (Soup OR Salad); ingredient
-keywords must all appear in the recipe's ingredient text (Chicken AND Rice).
-Matching is case-insensitive with word boundaries and common plurals. A keyword
-also matches compound ingredient names, such as chicken broth. Filters work on
-both the full collection and semantic search, before pagination/ranking limits.
-They narrow rather than override the description; conflicting selections can
-return no results. **Clear filters** restores the current unfiltered view.
-
-Results appear on a horizontal recipe shelf. Swipe/scroll sideways or use the
-left/right buttons. Keyboard users can focus the shelf and use Arrow keys,
-Home/End, then Enter to open a recipe. Collection page navigation remains below
-the shelf; changing a page or search resets the shelf to the first result.
-
-The carousel now uses a centered circular layout: selected cards are largest,
-and side cards shrink with distance. Horizontal scrolling/swiping changes selection;
-click a side card to center it, then click the center card to open its recipe.
-Left/right controls wrap around; Home/End select the first/last result.
-
-### Home and Search pages
-
-Home (`/`) is a discovery dashboard with one random featured recipe and eight
-more random picks. Shuffle requests a new sample and excludes the previous batch
-when the corpus is large enough. Click any recipe to open its instructions.
-Search (`/search`) retains pantry input, semantic search, keyword filters and the
-centered carousel. Home category shortcuts open Search with a preset dish filter.
-Both pages include Add a recipe. Restart the Python server after this route update.
