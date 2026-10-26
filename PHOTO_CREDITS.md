@@ -1,0 +1,65 @@
+# Illustrative photo credits
+
+These photos illustrate dish types, not the exact RecipeNLG recipes. Images are displayed cropped to fit. Original authors retain copyright; licenses apply to individual images.
+
+- **Lemonade** — HarshLight. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Lemonade_-_27682817724.jpg). Local file: `web/photos/lemonade.jpg`.
+- **Punch (drink)** — Politikaner. [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Bowle_Steinhude_2009_20090822_3.JPG). Local file: `web/photos/punch.jpg`.
+- **Iced tea** — Melissa Doroquez. [CC BY-SA 2.0](https://commons.wikimedia.org/wiki/File:Iced_Tea_from_flickr.jpg). Local file: `web/photos/tea.jpg`.
+- **Coffee** — Bex Walton. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Latte_and_dark_coffee.jpg). Local file: `web/photos/coffee.jpg`.
+- **Breakfast burrito** — Nurban. [CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:New_Mexican_breakfast_burrito.jpg). Local file: `web/photos/burrito.jpg`.
+- **Chocolate chip cookie** — brainloc on sxc.hu (Bob Smith). [CC BY 2.5](https://commons.wikimedia.org/wiki/File:Choco_chip_cookie.png). Local file: `web/photos/cookies.png`.
+- **Chocolate brownie** — Ɱ. [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Chocolatebrownie.JPG). Local file: `web/photos/brownies.jpg`.
+- **Cake** — Scheinwerfermann. [Public domain](https://commons.wikimedia.org/wiki/File:Pound_layer_cake.jpg). Local file: `web/photos/cake.jpg`.
+- **Chocolate cake** — Tracy Hunter from Kabul,, Afghanistan. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Chocolate_fudge_cake.jpg). Local file: `web/photos/chocolate-cake.jpg`.
+- **Smoothie** — rawpixel.com. [CC0](https://commons.wikimedia.org/wiki/File:Kiwi_Smoothie.jpg). Local file: `web/photos/smoothie.jpg`.
+- **Milkshake** — Renee Comet (Photographer). [Public domain](https://commons.wikimedia.org/wiki/File:Strawberry_milk_shake_(cropped).jpg). Local file: `web/photos/milkshake.jpg`.
+- **Orange juice** — rawpixel.com. [CC0](https://commons.wikimedia.org/wiki/File:Orangejuice.jpg). Local file: `web/photos/juice.jpg`.
+- **Vegetable soup** — Jennifer. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Vegetable_udon_noodle_soup.jpg). Local file: `web/photos/soup.jpg`.
+- **Beef stew** — FiveRings (talk). [CC BY 3.0](https://commons.wikimedia.org/wiki/File:Lamb-stew.jpg). Local file: `web/photos/stew.jpg`.
+- **Chili con carne** — Carstor. [CC BY-SA 2.5](https://commons.wikimedia.org/wiki/File:Bowl_of_chili.jpg). Local file: `web/photos/chili.jpg`.
+- **French toast** — Jonathunder. [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:FrenchToast.JPG). Local file: `web/photos/toast.jpg`.
+- **Casserole** — Suvi Korhonen. [CC BY 2.5](https://commons.wikimedia.org/wiki/File:Makaronilaatikko.jpg). Local file: `web/photos/casserole.jpg`.
+- **Meatloaf** — Renee Comet (photographer). [Public domain](https://commons.wikimedia.org/wiki/File:MeatloafWithSauce.jpg). Local file: `web/photos/meatloaf.jpg`.
+- **Pizza** — igorovsyannykov. [CC0](https://commons.wikimedia.org/wiki/File:Pizza-3007395.jpg). Local file: `web/photos/pizza.jpg`.
+- **Greek salad** — User:Jpatokal. [CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Greece_Food_Horiatiki.JPG). Local file: `web/photos/salad.jpg`.
+- **Potato salad** — SajjadF. [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Potato_salad_(1).jpg). Local file: `web/photos/potato-salad.jpg`.
+- **Fruit salad** — dnm. [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Fruktsallad_(Fruit_salad).jpg). Local file: `web/photos/fruit-salad.jpg`.
+- **Pasta salad** — Brynn. [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Pasta_salad_closeup.JPG). Local file: `web/photos/pasta-salad.jpg`.
+- **Bread** — 3268zauber. [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Korb_mit_Br%C3%B6tchen.JPG). Local file: `web/photos/bread.jpg`.
+- **Cornbread** — Zankopedia. [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Skillet_cornbread_(cropped).jpg). Local file: `web/photos/cornbread.jpg`.
+- **Biscuit (bread)** — Dale Cruse. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Loveless_Cafe_Biscuits.jpg). Local file: `web/photos/biscuits.jpg`.
+- **Muffin** — Unknown photographer/artist. [Public domain](https://commons.wikimedia.org/wiki/File:NCI_Visuals_Food_Muffins.jpg). Local file: `web/photos/muffins.jpg`.
+- **Pancake** — Mae Mu. [CC0](https://commons.wikimedia.org/wiki/File:Foodiesfeed.com_pouring-honey-on-pancakes-with-walnuts.jpg). Local file: `web/photos/pancakes.jpg`.
+- **Waffle** — Parkerman & Christie from San Diego, USA. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Waffles_with_Strawberries.jpg). Local file: `web/photos/waffles.jpg`.
+- **Cheesecake** — zingyyellow. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Baked_cheesecake_with_raspberries_and_blueberries.jpg). Local file: `web/photos/cheesecake.jpg`.
+- **Apple pie** — Shisma. [CC BY 4.0](https://commons.wikimedia.org/wiki/File:Apple_pie_14.jpg). Local file: `web/photos/pie.jpg`.
+- **Pudding** — SKopp. [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Blanc-manger_on_glass_platter,_full_view.jpg). Local file: `web/photos/pudding.jpg`.
+- **Ice cream** — Steven Depolo. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Vanilla_Ice_Cream_Cone_at_Camp_Manitoulin.jpg). Local file: `web/photos/ice-cream.jpg`.
+- **Fudge** — Siona Watson. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Handmade_fruit_fudge_squares.jpg). Local file: `web/photos/fudge.jpg`.
+- **Lasagna** — jules / stonesoup. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Lasagne_-_stonesoup.jpg). Local file: `web/photos/lasagna.jpg`.
+- **Spaghetti aglio e olio** — Spaghetti_aglio_olio_e_peperoncino_by_matsuyuki_retouched.jpg
+derivative work: Jbarta (talk). [CC BY-SA 2.0](https://commons.wikimedia.org/wiki/File:Aglio_e_olio.jpg). Local file: `web/photos/spaghetti.jpg`.
+- **Roast chicken** — Evan Swigart from Chicago, USA. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Max%27s_Roasted_Chicken_-_Evan_Swigart.jpg). Local file: `web/photos/chicken.jpg`.
+- **Roast beef** — Oxiq. [CC0](https://commons.wikimedia.org/wiki/File:Rostas_(ready_and_served).JPG). Local file: `web/photos/beef.jpg`.
+- **Fish and chips** — Matthias Meckel. [CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Fish_and_chips_blackpool.jpg). Local file: `web/photos/fish.jpg`.
+- **Cooked rice** — Ocdp. [CC0](https://commons.wikimedia.org/wiki/File:Meshi_001.jpg). Local file: `web/photos/rice.jpg`.
+- **Mashed potato** — sousvideguy. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Sous_vide_mashed_potatoes.jpg). Local file: `web/photos/potatoes.jpg`.
+- **Ratatouille** — Jack145945. [CC0](https://commons.wikimedia.org/wiki/File:Ratatouille_home_cooked.jpg). Local file: `web/photos/vegetables.jpg`.
+- **Baked beans** — Mk2010. [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Baked_beans_in_tomato_sauce.jpg). Local file: `web/photos/beans.jpg`.
+- **Hummus** — Beyrouthhh at English Wikipedia. [CC BY 3.0](https://commons.wikimedia.org/wiki/File:Lebanese_style_hummus.jpg). Local file: `web/photos/dip.jpg`.
+- **Tomato sauce** — Dennis Klein klein2. [CC0](https://commons.wikimedia.org/wiki/File:Fresh_Tomato_Sauce_(Unsplash).jpg). Local file: `web/photos/sauce.jpg`.
+- **Sandwich** — Jami430. [CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Bacon,_lettuce,_tomato,_and_avocado.jpg). Local file: `web/photos/sandwich.jpg`.
+- **Peanut butter cookie** — Janet Hudson. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Peanut_butter_cookies,_September_2009.jpg). Local file: `web/photos/peanut-cookies.jpg`.
+- **Oatmeal raisin cookie** — Dwight Burdette. [CC BY 3.0](https://commons.wikimedia.org/wiki/File:Archway_Oatmeal_Raisin_cookies.JPG). Local file: `web/photos/oatmeal-cookies.jpg`.
+- **Lemon bar** — Kjp001. [CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Lemon_Bar.jpg). Local file: `web/photos/lemon-bars.jpg`.
+- **Coleslaw** — Anagoria. [CC BY 3.0](https://commons.wikimedia.org/wiki/File:2015-12-20_Spitzkohlsalat_mit_M%C3%B6hren_anagoria.JPG). Local file: `web/photos/coleslaw.jpg`.
+- **Meatball** — ralphhogaboom. [CC BY-SA 2.0](https://commons.wikimedia.org/wiki/File:Soup_with_meatballs-01.jpg). Local file: `web/photos/meatballs.jpg`.
+- **Hamburger** — Hongreddotbrewhouse. [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:RedDot_Burger.jpg). Local file: `web/photos/burger.jpg`.
+- **Buffalo wing** — Clotee Pridgen Allochuku. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Buffalo_wings-01.jpg). Local file: `web/photos/wings.jpg`.
+- **Quiche** — Ghouston. [CC0](https://commons.wikimedia.org/wiki/File:Quiche.jpg). Local file: `web/photos/quiche.jpg`.
+- **Pickled cucumber** — Renee Comet (photographer). [Public domain](https://commons.wikimedia.org/wiki/File:Pickle.jpg). Local file: `web/photos/pickles.jpg`.
+- **Salsa (food)** — Popo le Chien. [CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Various_salsas.jpg). Local file: `web/photos/salsa.jpg`.
+- **Slushy** — Lemsipmatt. [CC BY-SA 2.0](https://commons.wikimedia.org/wiki/File:Lemon-Lime_Slush.jpg). Local file: `web/photos/slush.jpg`.
+- **Jello salad** — Jengod. [CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Lime_jello_salad.jpg). Local file: `web/photos/gelatin.jpg`.
+- **Green bean casserole** — Rick Kimpel from Spring, TX, USA. [CC BY-SA 2.0](https://commons.wikimedia.org/wiki/File:Green_bean_casserole.jpg). Local file: `web/photos/green-beans.jpg`.
+- **Pasta primavera** — Jeremy Keith. [CC BY 2.0](https://commons.wikimedia.org/wiki/File:Pasta_primavera.jpg). Local file: `web/photos/pasta.jpg`.
