@@ -87,3 +87,14 @@ Added checks for soups, salads, desserts, bread, pasta, and breakfast.
 - searching cozy dinner produces a breakfast burrito, this is an error, make sure to avoid any coonflicting recipes that don't fit the description by user
 - OK, the search results should be layed out with more design. They should be horizontally layed out for the user to slide left and right, like choosing a movie on an air plane's tv
 - OK, seperate the search page and a home page. Search page is what we have so far, home page is a dashboard that allows users to browse different recipes at random
+
+### Render preparation prompts (verbatim)
+
+> free
+
+> ok, help me do the changes
+
+Added render_setup.py to build a seed dataset/database and render_start.py to run
+an ephemeral public demo. Added Render port binding, explicit HTTPS origin handling,
+Python version pin, health/config endpoints, temporary-data notice and integration
+tests. Raw recipes, build seed and runtime demo database remain Git-ignored.

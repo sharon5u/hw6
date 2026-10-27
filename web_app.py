@@ -14,9 +14,10 @@ from store import ROOT, RecipeStore
 from photos import with_photo, photo_manifest, PHOTO_DIR
 
 
-def create_server(port=8000, store_path=ROOT / 'chroma_store'):
+def create_server(port=8000, store_path=ROOT / 'chroma_store', *, host='127.0.0.1', public_origin=None, demo=False):
     store = RecipeStore(store_path)
     lock = threading.Lock()
+    initial_count = store.count()
 
     def all_recipes():
         records = store.collection.get(include=['metadatas'])['metadatas'] or []
@@ -35,6 +36,10 @@ def create_server(port=8000, store_path=ROOT / 'chroma_store'):
 
         def do_GET(self):
             parsed = urlparse(self.path)
+            if parsed.path == '/healthz':
+                return self.respond({'status': 'ok'})
+            if parsed.path == '/api/config':
+                return self.respond({'temporary_demo': demo})
             if parsed.path == '/api/discover':
                 query = parse_qs(parsed.query)
                 excluded = set(query.get('exclude', [])[:12])
@@ -87,9 +92,9 @@ def create_server(port=8000, store_path=ROOT / 'chroma_store'):
             self.wfile.write(raw)
 
         def do_POST(self):
-            # Local mutations are same-origin only; do not expose this server publicly.
+            # Pin hosted origin explicitly; do not trust forwarded protocol headers.
             origin = self.headers.get('Origin')
-            if origin and origin != 'http://' + self.headers.get('Host', ''):
+            if origin and origin != (public_origin or 'http://' + self.headers.get('Host', '')):
                 return self.respond({'error': 'Cross-origin requests are not allowed.'}, 403)
             if self.headers.get('Content-Type', '').split(';')[0] != 'application/json':
                 return self.respond({'error': 'Expected JSON.'}, 415)
@@ -134,6 +139,8 @@ def create_server(port=8000, store_path=ROOT / 'chroma_store'):
                     recipe = Recipe('user-' + str(uuid.uuid4()), title.strip(), ingredients, names,
                                     [x.strip() for x in steps], description.strip())
                     with lock:
+                        if demo and store.count() >= initial_count + 100:
+                            return self.respond({'error': 'This temporary demo has reached its recipe-addition limit.'}, 429)
                         store.index([recipe])
                         count = store.count()
                     return self.respond({'recipe': with_photo(recipe.to_dict()), 'count': count}, 201)
@@ -145,7 +152,7 @@ def create_server(port=8000, store_path=ROOT / 'chroma_store'):
                 traceback.print_exc()
                 return self.respond({'error': 'Could not complete the request. Check the server terminal and try again.'}, 500)
 
-    return ThreadingHTTPServer(('127.0.0.1', port), Handler)
+    return ThreadingHTTPServer((host, port), Handler)
 
 
 if __name__ == '__main__':

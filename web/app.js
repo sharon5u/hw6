@@ -197,3 +197,5 @@ async function loadHome(){
 $('#shuffle-recipes').onclick=loadHome;
 $('#home-mascot').innerHTML=dishDrawing('pancakes','happy pancakes');
 if(isHome)loadHome();
+
+api('/api/config').then(config=>{$('#demo-notice').hidden=!config.temporary_demo;}).catch(()=>{});

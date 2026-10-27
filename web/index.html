@@ -1,8 +1,9 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pantry Pal — A little inspiration for your kitchen</title><link rel="stylesheet" href="/style.css?v=pages1"><script src="/app.js?v=pages1" defer></script></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pantry Pal — A little inspiration for your kitchen</title><link rel="stylesheet" href="/style.css?v=render1"><script src="/app.js?v=render1" defer></script></head>
 <body>
 <header><a href="/" class="brand"><span class="brand-icon">✿</span> Pantry Pal<span class="brand-note">YOUR HAPPY LITTLE COOKBOOK</span></a><nav aria-label="Main navigation"><a class="nav-link" id="home-nav" href="/">Home</a><a class="nav-link" id="browse-nav" href="/search">Search</a><button class="button small" id="add-nav">＋ Add a recipe</button></nav></header>
 <main>
+<p id="demo-notice" class="demo-notice" hidden>Public demo: added recipes are shared with other visitors and may disappear when the service restarts. Keep a copy of anything you add.</p>
 <div id="home-page" hidden>
 <section class="home-welcome"><div><span class="eyebrow">A FRESH LITTLE HELPING OF INSPIRATION</span><h1>What looks yummy<br>today?</h1><p>A surprise selection from your cookbook. No ingredients to enter,<br>no plans needed. Just follow your appetite.</p><div class="home-actions"><button class="button" id="shuffle-recipes">Shuffle recipes ↻</button><a class="button outline" href="/search">Find a specific dish →</a></div></div><div class="home-mascot" id="home-mascot" aria-hidden="true"></div></section>
 <div class="dashboard-stats"><div><strong data-recipe-count>…</strong><span>recipes in your cookbook</span></div><div><strong id="discovery-count">…</strong><span>surprises in this selection</span></div><div><strong>Your next favorite?</strong><span>One little shuffle away.</span></div></div>

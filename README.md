@@ -50,3 +50,26 @@ python app.py import data/recipes_500.json
 #Start the app
 python web_app.py
 Open http://127.0.0.1:8000 in your browser. Internet access is required for the initial downloads. Keep the terminal open while using the app; press Ctrl+C to stop it.
+
+### Render free demo deployment (AI-generated setup notes)
+
+Use a Python Web Service connected to this repository, branch `main`:
+
+- Build command: `pip install -r requirements.txt && python render_setup.py`
+- Start command: `python render_start.py`
+- Health check path: `/healthz`
+- Instance: Free. No disk or API key required.
+- Python is pinned by `.python-version` (3.12.14).
+
+The build fetches 500 recipes and creates an ignored seed database and model cache
+as build artifacts. Startup copies the seed to a separate temporary demo database
+if needed, listens on `0.0.0.0` and Render's `PORT`, and uses Render's provided
+`RENDER_EXTERNAL_URL` for HTTPS origin checks. No manual environment variables are
+needed for the standard onrender.com address. For a custom domain, the allowed
+origin needs updating too.
+
+Free hosting may sleep and reset its filesystem; additions are shared among all
+visitors and may disappear. A visible banner explains this. The demo permits up
+to 100 additional recipes per process lifetime. The local app (`web_app.py`) still
+uses its normal persistent database. The cloud's 512 MB memory limit has not been
+validated locally; inspect Render logs if the build or process runs out of memory.
