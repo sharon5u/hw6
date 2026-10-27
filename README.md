@@ -1,14 +1,15 @@
 ## Web APP for HW 6 - Pantry Pal
-
+Pantry Pal is a recipe discovery app that helps users find recipes through meaning-based search, available ingredients, and customizable filters new. User can enter their description of the meal they want and put down the ingredients they have to search for a dish.
 
 ## Data Source and Info
-
+Data is originally from RecipeNLG: a novel dataset of cooking recipes.
 
 ## How to add/use?
-
+User can add an entry to the dataset by adding their own recipe (name, ingredients, steps). 
 
 ## Two queries
-
+1. "A refreshing beverage for a summer gathering” --> Easy Party Punch
+2. “A cozy dinner on a cold winter night” --> Swiss Vegetable Medley
 ## How to obtain data
 
 ### Run the prepared copy
