@@ -1,9 +1,9 @@
-## Tools
+# Tools
 
 CodeX: Python implementation, building first version, debugging, tests. 
 
-## CodeX Prompts
-# First Version + embedding testing model: 
+# CodeX Prompts
+## First Version + embedding testing model: 
 > I want to go for the cooking direction where that dataset is hundreds of recipes and the user can input what ingredients they currently have and the app will search for these ingredients and return the recipes that includes the ingredients and return a dish.
 
 > You’re building an app that uses a vector database, rather than implementing the database itself. The assignment lists today, October 26, at 8 PM as the deadline and estimates 4.5 hours.
@@ -40,7 +40,7 @@ Common seasonings are assumed available. Without pantry ingredients, results sta
 5. The frontend displays the recipes
 The app returns the ranked recipes, ingredients, instructions, and pantry counts. The cartoon illustrations are selected separately; they do not affect vector search.
 
-# Developing Frontend
+## Developing Frontend
 > OK, I want a functioning app aside from VS code that has a front end that users can use, build it, using the theme of a cook book.
 > Built your cookbook-style frontend, connected to your existing ChromaDB collection.
 You can now:
@@ -61,7 +61,7 @@ slideRecipes()
 Your current app already has this horizontal carousel. If you still see an older layout, refresh Chrome with Cmd+Shift+R.
 >It should be symmetrical, with the one selected to be the biggest and in the middle, while ones on the side getting smaller and smaller, when the user scrolls, the one selected changes
 
-# Debugging
+## Debugging
 > OK, I tested the app, but often times I only have 1 item in hand, which doesn't really work because I would still need a lot to make the dish. When you present the search results, rank from top match to bottom.
 > Where should I put this in VS code, which file does this portion belong?
 > How does implementing filters relate to vector spaces, are key words matched by meaning or just word search?
