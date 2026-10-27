@@ -1,169 +1,89 @@
-# Prompt log — working record
+## Tools
 
-This file was assembled by Codex from the visible conversation. It is not a complete
-student-authored process log or a claim of time spent. Review it, add future prompts
-verbatim, record your own work, and identify the exact model shown in your app if required.
+CodeX: Python implementation, building first version, debugging, tests. 
 
-## Tools used and purpose
+## CodeX Prompts
+# First Version + embedding testing model: 
+> I want to go for the cooking direction where that dataset is hundreds of recipes and the user can input what ingredients they currently have and the app will search for these ingredients and return the recipes that includes the ingredients and return a dish.
 
-- Codex: dataset research, Python implementation, debugging, tests, and setup notes.
-- Web search/browser retrieval: assignment, RecipeNLG data cards, current Chroma docs.
-- Python and terminal tools: fetch a small subset, build the index, test CLI behavior.
-- Chroma's all-MiniLM-L6-v2 ONNX model: local embeddings used by the app, not a chat model.
-- No language-model API is used inside the app.
+> You’re building an app that uses a vector database, rather than implementing the database itself. The assignment lists today, October 26, at 8 PM as the deadline and estimates 4.5 hours.
+Follow this order:
+1. Choose a useful idea and real dataset: a few hundred items or chunks minimum.
+2. Write two semantic-search examples: queries that should retrieve relevant items without sharing important keywords.
+3. Start a new standalone project. Python + ChromaDB is recommended; a CLI is sufficient.
+4. Prove persistence: add a small sample, restart, and confirm it remains.
+5. Load your corpus, splitting long documents into smaller chunks.
+6. Implement search and runtime additions. Newly added items must be immediately searchable.
+7. Make results useful: explain recommendations, answer questions, compare matches, or flag duplicates.
+8. Test the complete workflow, including both semantic examples and restarting.
 
-## Important user prompts (verbatim)
+> Explain how vector database search works in my project 
+> Your app combines semantic search through ChromaDB with category filtering and ingredient ranking.
+1. Recipes become searchable vectors
+Each recipe’s text is converted into an embedding: a list of numbers representing its meaning. Your project uses the all-MiniLM-L6-v2 embedding model.
+ChromaDB stores these vectors alongside the recipe information. Long recipes are split into overlapping chunks so their content fits the model.
+2. The user’s description becomes another vector
+For a request such as:
+“A cozy dinner on a cold winter night”
 
-> I am completing a homework to build a vector database: [https://www.cs.cmu.edu/\~113/hw6.html](https://www.cs.cmu.edu/~113/hw6.html) read the instructions and tell me what I should do
+The same model converts that sentence into a vector. ChromaDB compares it with the stored recipe vectors using cosine distance. A lower distance means greater semantic similarity.
+This can find a comforting casserole even if its recipe never uses the words “cozy” or “winter.” That is the main advantage over exact keyword search.
+3. Your app filters incompatible results
+Semantic similarity alone can produce mistakes. Your app therefore applies additional rules:
+- Discard results above the configured distance threshold of 0.70.
+- Combine matching chunks so each recipe appears only once.
+- Apply meal/category constraints—for example, exclude breakfast dishes from an ordinary dinner request.
+These category rules are your application code, not something ChromaDB automatically understands.
+4. Pantry ingredients determine the final ranking
+If the user enters pantry ingredients, your app compares them with each eligible recipe’s ingredients. It prioritizes recipes that use something available, then those requiring fewer missing or unverified ingredients.
+Common seasonings are assumed available. Without pantry ingredients, results stay ordered by semantic similarity.
+5. The frontend displays the recipes
+The app returns the ranked recipes, ingredients, instructions, and pantry counts. The cartoon illustrations are selected separately; they do not affect vector search.
 
-> OK, brainstorm some ideas for me
+# Developing Frontend
+> OK, I want a functioning app aside from VS code that has a front end that users can use, build it, using the theme of a cook book.
+> Built your cookbook-style frontend, connected to your existing ChromaDB collection.
+You can now:
+- Browse all 500 recipes.
+- Search by pantry ingredients and meal preferences.
+- Open recipes with checkable ingredients and instructions.
+- Add recipes that persist and become searchable immediately.
 
-> I want to go for the cooking direction where that dataset is hundreds of recipes and the user can input what ingredients they currently have and the app will search for these ingredients and return the recipes that includes the ingredients and return a dish, does this meet the requirements
+>OK, the search results should be layed out with more design. They should be horizontally layed out for the user to slide left and right, like choosing a movie on an air plane's tv.
+>where should I edit to make the search results horizontal
+>In VS Code, edit web/style.css. Search for:
+.recipe-carousel
+That controls the horizontal layout. The latest rules near the bottom control the large centered card and smaller side cards.
+For scrolling, selection, and arrow-button behavior, edit web/app.js, especially:
+updateCarousel()
+selectRecipe()
+slideRecipes()
+Your current app already has this horizontal carousel. If you still see an older layout, refresh Chrome with Cmd+Shift+R.
+>It should be symmetrical, with the one selected to be the biggest and in the middle, while ones on the side getting smaller and smaller, when the user scrolls, the one selected changes
 
-> 好的,就这么做，我现在第一步需要干什么
-
-> 帮我把我需要做的都列出来，从第一步到提交
-
-> ok, help me do the second step, find a dataset for my project
-
-> use english now, please help me built the first version of my app
-
-> No, the dataset it too large, help me extract 500 recipes from there and continue from there
-
-## Development record — AI-generated factual notes
-
-1. Discussed why ingredient-only matching does not demonstrate semantic search.
-   Selected meal-intent retrieval plus explicit pantry matching.
-2. Researched RecipeNLG and its fields. Initially suggested the full download.
-   User requested a small extract instead because the full dataset is too large.
-3. Located a readable Hugging Face mirror and used its rows API. Downloaded 600
-   complete unique recipes from six windows; selected 500 using seed 42 (about 463 KB).
-4. Installed ChromaDB 1.5.9 in a Python 3.12 environment after network access was granted.
-5. Built data parsing, local model caching, token-aware chunking, persistent storage,
-   retrieval, pantry reranking, runtime additions, and a CLI.
-6. Downloaded the real embedding model and indexed the 500 recipes into 501 chunks.
-7. Initial testing showed weak matches for vague warmth-related requests and poor
-   handling of negation. An initial integration assertion expecting stew from
-   "Something warming for a chilly evening" failed. Replaced that speculative
-   test with a concrete vegetable-dinner test and recorded the limitation rather
-   than claiming the failed example worked. Tightened the distance cutoff from
-   0.85 to 0.70 after observing irrelevant bicycle-query results around 0.74.
-8. Tested actual semantic examples against the 500-recipe corpus, including a
-   beverage query and a winter-dinner query. Details are in TEST_REPORT.md.
-9. Found that Easy Party Punch's extracted ingredient names omit Kool-Aid. Added
-   explicit flags for raw ingredient lines not covered by extracted names, with a regression test.
-10. All 8 automated tests passed. Repeated the complete import and verified that
-    500 recipes / 501 chunks remained unchanged. Added a launch script and initialized
-    a local Git repository; nothing was published or submitted.
-
-## Continue here
-
-### Frontend follow-up prompt (verbatim)
-
-> OK, I want a functioning app that has a front end that users can use, build it, using the theme of a cook book.
-
-Codex added a local Python HTTP server and a responsive HTML/CSS/JavaScript cookbook
-interface connected to the existing Chroma collection. Added four HTTP tests for
-saving/searching/persistence, static serving, validation, and cross-origin rejection.
-The full 12-test suite passed. Browser checks used the actual collection for search
-and a separate disposable collection for testing recipe creation.
-
-Add your actual prompts, your debugging observations, changes you made, and actual
-time spent. Do not invent development steps or rewrite prompts as if you had asked them.
-
-### Pantry ranking follow-up (verbatim)
-
+# Debugging
 > OK, I tested the app, but often times I only have 1 item in hand, which doesn't really work because I would still need a lot to make the dish. When you present the search results, rank from top match to bottom.
-
-Codex replaced the weighted semantic-first ranking with pantry-first ranking among
-semantically eligible recipes. Missing and unverified ingredient counts determine
-shopping effort; coverage and semantic distance break ties. Removed the candidate
-cap for this small corpus and added result-card counts and four ranking tests.
-
-### Main-ingredient matching follow-up (verbatim)
-
+> Where should I put this in VS code, which file does this portion belong?
+> How does implementing filters relate to vector spaces, are key words matched by meaning or just word search?
+> i only have one or zero item on hand for all the recipes suggested, what is going on? Am I have too less of data in dataset
+> The main reason is that you entered only rice. “1 on hand” means the recipe uses one ingredient from your list—not that it’s a poor match. With only one ingredient listed, a recipe can match at most one pantry item.
+Enter everything you actually have, for example:
+rice, eggs, onion, garlic, butter, salt, pepper
+500 recipes is enough for the assignment, but a larger, more varied collection could improve your choices. It won’t solve the ingredient-count issue by itself. Another limitation is that matching is strict: rice and white rice may currently be treated as different ingredients.
 > OK, this is too narrow of research, seasoning such as oil, salt, pepper, sugar can ba ignored in research and assume we have them. The search is focused more on raw ingrdiantes such as beef, brocoli, etc, does not include seasoning and flavoring
-
-Codex added an explicit seasoning/flavoring list, excluded those items from pantry
-coverage and shopping penalties (including quantity-bearing unverified lines),
-and updated the browser and CLI explanation. Main ingredients remain checked.
-Seasoning-only pantry input falls back to semantic ordering.
-
-### Category correction prompt (verbatim)
-
+> what is the problem with the narrow search mentioned earlier
+> The earlier search was too narrow because it focused heavily on exact ingredient matches. If you entered only “rice,” most recipes matched just that one ingredient and still required several others. Counting salt, oil, and seasonings as missing made this worse.
+We improved it by assuming common seasonings are available, ranking recipes by pantry fit and fewer missing ingredients, and using semantic search for your meal description.
 > the search is not correct, don't put dishes in here when the word Beverage appears, fix this bug and similar bugs where the category of the food doesn't even match
-
-Codex traced this to pantry ranking promoting semantically loose, wrong-category
-recipes. Added explicit category constraints before ranking using title-based
-classification, plus five tests including the screenshot's exact query and pantry.
-Also verified the existing 15 core tests. The conservative rules may exclude
-unusually named recipes; unknown categories are not silently used as fallback.
-
-### Recipe photo prompt (verbatim)
-
-> Have a photo ready for each dish the app recommends
-
-Codex added 60 locally stored Wikimedia photos, dish-type matching for cards and
-recipe details, and visible illustrative labels with author/license/source credit.
-RecipeNLG has no exact-recipe image field, so similar recipes share representative
-photos. New recipes receive a matching photo or fallback automatically. All 501
-recipes currently stored resolve to a local image. The 28-test suite passed;
-photo tests were repeated after final asset refinements. Browser preview verified
-loaded photographs and attribution. PHOTO_CREDITS.md documents all sources.
-
-### Cartoon redesign prompt (verbatim)
-
-> These images don't look right, the photo should be a cartoon image of the dish might look like. Also, change the entire web app's style to cartoon and cute fonts.
-
-Replaced photographs in the interface with original inline SVG food illustrations;
-added a pastel cartoon theme, rounded cards, playful buttons, and local Nunito font.
-Illustrations also work with older API responses lacking photo metadata. Recipe
-search, pantry counts, adding recipes, and recipe detail interactions are retained.
-
-### Meal-intent correction prompt (verbatim)
-
+> Food category now filters results before pantry ranking, so matching garlic can’t make a chicken dish appear in a beverage search.
+Your exact example now returns only:
+- Lemonade
+- Aggie Maroon Punch
+- Easy Party Punch
+- Hot Cranberry Punch
+- Heavenly Punch
+- Russian Tea
+Added checks for soups, salads, desserts, bread, pasta, and breakfast.
 > searching cozy dinner produces a breakfast burrito, this is an error, make sure to avoid any coonflicting recipes that don't fit the description by user
-
-Made lunch/dinner/supper/main-course requests require a recognized meal category
-and exclude breakfast, snacks, bread, desserts, beverages and condiments unless
-explicitly requested. Explicit breakfast/brunch labels now take precedence over
-casserole/pasta classification. Tested breakfast-for-dinner exceptions, negative
-category requests, and real cozy-dinner searches with and without pantry inputs.
-Rules support meal/category constraints; arbitrary natural-language preferences
-still rely on semantic retrieval and are not guaranteed hard constraints.
-
-### Keyword filters prompt (verbatim)
-
-> OK, now the app seems a bit too simple, implement a filter feature where the user can choose key words to filter dishes
-
-Added accessible checkbox chips for dish types and ingredient keywords with Apply
-and Clear controls. Shared backend filtering supports browsing and semantic search,
-validates the filter vocabulary, and runs before ranking limits and pagination.
-Added unit and HTTP integration coverage and verified applying/clearing in browser.
-
-### Horizontal carousel prompt (verbatim)
-
 > OK, the search results should be layed out with more design. They should be horizontally layed out for the user to slide left and right, like choosing a movie on an air plane's tv
-
-Changed recipe results and collection pages into a horizontal snap-scrolling shelf
-with larger cartoon cards, previous/next arrows, visible-result position, and
-keyboard Arrow/Home/End navigation. Native touch/trackpad scrolling is supported.
-Verified arrow navigation, end boundary, and opening a recipe with Enter in browser.
-
-### Centered carousel prompt (verbatim)
-
-> It should be symmetrical, with the one selected to be the biggest and in the middle, while ones on the side getting smaller and smaller, when the user scrolls, the one selected changes
-
-Implemented a circular centered carousel with progressive side-card scaling,
-horizontal trackpad/wheel and swipe selection, arrow/keyboard controls, and side
-card selection before opening. The first result remains the initial selection;
-wrapping keeps neighboring results on both sides.
-
-### Home dashboard prompt (verbatim)
-
 > OK, seperate the search page and a home page. Search page is what we have so far, home page is a dashboard that allows users to browse different recipes at random
-
-Added separate Home and Search routes with shared navigation and dialogs. Home
-samples nine recipes, highlights one, and supports shuffling without immediate
-batch repeats when enough records exist. Search retains its existing behavior.
-Added discovery endpoint tests for unique sampling, exclusions and both routes.
